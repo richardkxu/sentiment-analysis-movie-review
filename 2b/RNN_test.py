@@ -1,23 +1,17 @@
 import numpy as np
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
-import torch.optim as optim
 from torch.autograd import Variable
-import torch.distributed as dist
 
 import time
 import os
-import sys
 import io
 import argparse
-
-from RNN_model import RNN_model
 
 
 # parse input
 parser = argparse.ArgumentParser()
 parser.add_argument('--gpu', type=str, help='which gpu(cuda visible device) to use')
+parser.add_argument('--seq_len', type=int, help='number of words per document to cut')
 args = parser.parse_args()
 
 if not args.gpu:
@@ -25,6 +19,9 @@ if not args.gpu:
 else:
     os.environ["CUDA_VISIBLE_DEVICES"]=args.gpu
     print("Using gpu: {}".format(args.gpu))
+
+model_name = 'rnn_seq' + str(args.seq_len) + '.model'
+print("Testing: {}".format(model_name))
 
 ######## load test set ########
 glove_embeddings = np.load('../preprocessed_data/glove_embeddings.npy')
@@ -47,7 +44,7 @@ y_test[0:12500] = 1
 # add 1 to vocab_size. Remember we actually added 1 to all
 # of the token ids so we could use id 0 for the unknown token
 vocab_size += 1
-model = torch.load('rnn_seq250.model')
+model = torch.load(model_name)
 model.cuda()
 
 
