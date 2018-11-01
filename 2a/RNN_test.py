@@ -46,7 +46,7 @@ y_test[0:12500] = 1
 # add 1 to vocab_size. Remember we actually added 1 to all
 # of the token ids so we could use id 0 for the unknown token
 vocab_size += 1
-model = torch.load('rnn.model')
+model = torch.load('rnn_seq250.model')
 model.cuda()
 
 
@@ -75,7 +75,6 @@ for epoch in range(no_of_epochs):
     for i in range(0, L_Y_test, batch_size):
 
         x_input2 = [x_test[j] for j in I_permutation[i:i + batch_size]]
-        sequence_length = 100
         x_input = np.zeros((batch_size, sequence_length), dtype=np.int)
         for j in range(batch_size):
             x = np.asarray(x_input2[j])
@@ -110,6 +109,6 @@ for epoch in range(no_of_epochs):
 
     min, sec = divmod(sec, 60)
     hr, min = divmod(min, 60)
-    print('Epoch: {} | Test Acc: {:.3f}% | Time: {:.2f} hr {:.2f} min {:.2f} sec'.format(epoch, epoch_acc*100.0, hr, min, sec))
+    print('Seq Length: {} | Test Acc: {:.3f}% | Time: {:.2f} hr {:.2f} min {:.2f} sec'.format(sequence_length, epoch_acc*100.0, hr, min, sec))
 
 
