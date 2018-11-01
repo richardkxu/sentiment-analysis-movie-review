@@ -23,6 +23,7 @@ else:
 model_name = 'rnn_seq' + str(args.seq_len) + '.model'
 print("Testing: {}".format(model_name))
 
+
 ######## load test set ########
 glove_embeddings = np.load('../preprocessed_data/glove_embeddings.npy')
 vocab_size = 100000
@@ -57,6 +58,7 @@ model.eval()
 test_accu = []
 
 # test
+# here we run multiple epochs to test performance on different sequence length
 for epoch in range(no_of_epochs):
     model.eval()
 

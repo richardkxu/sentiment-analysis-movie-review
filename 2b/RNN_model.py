@@ -31,7 +31,8 @@ class StatefulLSTM(nn.Module):
 
 
 # use same dropout mask compared with the traditional dropout
-# It has been shown to be more effective to use the same dropout mask for an entire sequence as opposed to a different dropout mask each time
+# It has been shown to be more effective to use the same dropout mask
+# for an entire sequence as opposed to a different dropout mask each time
 class LockedDropout(nn.Module):
     def __init__(self):
         super(LockedDropout,self).__init__()
@@ -85,11 +86,7 @@ class RNN_model(nn.Module):
         pool = nn.MaxPool1d(x.shape[1])
         h = pool(outputs)
         h = h.view(h.size(0), -1)
-
         h = self.fc_output(h)
 
         return self.loss(h[:, 0], t), h[:, 0]
-
-
-
 

@@ -1,14 +1,10 @@
 import numpy as np
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
 import torch.optim as optim
 from torch.autograd import Variable
-import torch.distributed as dist
 
 import time
 import os
-import sys
 import io
 import argparse
 
@@ -36,21 +32,20 @@ vocab_size = 100000
 x_train = []
 with io.open('../preprocessed_data/imdb_train_glove.txt','r',encoding='utf-8') as f:
     lines = f.readlines()
+
 for line in lines:
     line = line.strip()
     line = line.split(' ')
     line = np.asarray(line,dtype=np.int)
-
     line[line>vocab_size] = 0
-
     x_train.append(line)
+
 x_train = x_train[0:25000]
 y_train = np.zeros((25000,))
 y_train[0:12500] = 1
 
 
 vocab_size += 1
-
 model = RNN_model(500)
 model.cuda()
 
@@ -90,9 +85,6 @@ for epoch in range(no_of_epochs):
 
     for i in range(0, L_Y_train, batch_size):
 
-        # the variable x_input we send to the model is not actually
-        # a torch tensor at this moment. It’s simply a list of lists
-        # containing the token ids.
         x_input2 = [x_train[j] for j in I_permutation[i:i+batch_size]]
         sequence_length = 100
         x_input = np.zeros((batch_size,sequence_length),dtype=np.int)

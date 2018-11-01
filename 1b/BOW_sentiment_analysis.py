@@ -1,14 +1,10 @@
 import numpy as np
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
 import torch.optim as optim
 from torch.autograd import Variable
-import torch.distributed as dist
 
 import time
 import os
-import sys
 import io
 import argparse
 
@@ -37,14 +33,12 @@ for line in lines:
     line = line.strip()
     line = line.split(' ')
     line = np.asarray(line,dtype=np.int)
-
     line[line>vocab_size] = 0
     line = line[line!=0]
-
     # do the mean operation for the entire sequence one time when loading in the data
     line = np.mean(glove_embeddings[line],axis=0)
-
     x_train.append(line)
+
 x_train = np.asarray(x_train)
 x_train = x_train[0:25000]
 y_train = np.zeros((25000,))
@@ -58,13 +52,11 @@ for line in lines:
     line = line.strip()
     line = line.split(' ')
     line = np.asarray(line,dtype=np.int)
-
     line[line>vocab_size] = 0
     line = line[line!=0]
-
     line = np.mean(glove_embeddings[line],axis=0)
-
     x_test.append(line)
+
 x_test = np.asarray(x_test)
 y_test = np.zeros((25000,))
 y_test[0:12500] = 1

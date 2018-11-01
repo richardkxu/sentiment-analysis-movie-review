@@ -1,14 +1,10 @@
 import numpy as np
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
 import torch.optim as optim
 from torch.autograd import Variable
-import torch.distributed as dist
 
 import time
 import os
-import sys
 import io
 import argparse
 
@@ -29,6 +25,7 @@ else:
 
 print("Using sequence length of: {}".format(args.seq_len))
 
+
 ######## load training set ########
 vocab_size = 8000
 
@@ -40,10 +37,9 @@ for line in lines:
     line = line.strip()
     line = line.split(' ')
     line = np.asarray(line,dtype=np.int)
-
     line[line>vocab_size] = 0
-
     x_train.append(line)
+
 # grab the first 25,000 sequences (train set)
 # first 12500 are labeled 1 for positive; next 12500 are 0 for negative
 x_train = x_train[0:25000]

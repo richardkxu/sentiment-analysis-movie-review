@@ -91,7 +91,6 @@ class RNN_model(nn.Module):
         pool = nn.MaxPool1d(no_of_timesteps)
         h = pool(outputs)
         h = h.view(h.size(0),-1)
-
         h = self.fc_output(h)
 
         return self.loss(h[:,0],t), h[:,0]

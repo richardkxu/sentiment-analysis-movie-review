@@ -1,18 +1,11 @@
 import numpy as np
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
-import torch.optim as optim
 from torch.autograd import Variable
-import torch.distributed as dist
 
 import time
 import os
-import sys
 import io
 import argparse
-
-from RNN_model import RNN_model
 
 
 # parse input
@@ -36,10 +29,9 @@ for line in lines:
     line = line.strip()
     line = line.split(' ')
     line = np.asarray(line,dtype=np.int)
-
     line[line>vocab_size] = 0
-
     x_test.append(line)
+
 y_test = np.zeros((25000,))
 y_test[0:12500] = 1
 
@@ -59,6 +51,7 @@ model.eval()
 test_accu = []
 
 # test
+# here we run multiple epochs to test performance on different sequence length
 for epoch in range(no_of_epochs):
     model.eval()
 
