@@ -10,8 +10,21 @@ import time
 import os
 import sys
 import io
+import argparse
 
 from BOW_model import BOW_model
+
+
+# parse input
+parser = argparse.ArgumentParser()
+parser.add_argument('--gpu', type=str, help='which gpu(cuda visible device) to use')
+args = parser.parse_args()
+
+if not args.gpu:
+    print("Using all available GPUs, data parallelism")
+else:
+    os.environ["CUDA_VISIBLE_DEVICES"]=args.gpu
+    print("Using gpu: {}".format(args.gpu))
 
 ######## load training set ########
 vocab_size = 8000
