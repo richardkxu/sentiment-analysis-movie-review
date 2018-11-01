@@ -27,6 +27,8 @@ else:
     os.environ["CUDA_VISIBLE_DEVICES"]=args.gpu
     print("Using gpu: {}".format(args.gpu))
 
+print("Using sequence length of: {}".format(args.seq_len))
+
 ######## load training set ########
 vocab_size = 8000
 
@@ -135,5 +137,6 @@ for epoch in range(no_of_epochs):
     hr, min = divmod(min, 60)
     print('Epoch: {} | Test Acc: {:.3f}% | Time: {:.2f} hr {:.2f} min {:.2f} sec'.format(epoch, epoch_acc*100.0, hr, min, sec))
 
-torch.save(model, "rnn_seq100.model")
+torch.save(model, "rnn_seq" + str(args.seq_len) + ".model")
+
 
