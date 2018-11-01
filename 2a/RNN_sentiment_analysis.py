@@ -135,7 +135,7 @@ for epoch in range(no_of_epochs):
     sec = time2-time1
     min, sec = divmod(sec, 60)
     hr, min = divmod(min, 60)
-    print('Epoch: {} | Train Acc: {:.3f}% | Train Loss: {:.3f}% | Time: {:.2f} hr {:.2f} min {:.2f} sec'.format(epoch, epoch_acc*100.0, epoch_loss, hr, min, sec))
+    print('Epoch: {} | Train Acc: {:.3f}% | Train Loss: {:.3f} | Time: {:.2f} hr {:.2f} min {:.2f} sec'.format(epoch, epoch_acc*100.0, epoch_loss, hr, min, sec))
 
 torch.save(model, "rnn_seq" + str(args.seq_len) + ".model")
 

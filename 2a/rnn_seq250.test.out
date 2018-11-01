@@ -1,0 +1,11 @@
+Using gpu: 2
+Seq Length: 50 | Test Acc: 72.612% | Time: 0.00 hr 0.00 min 2.75 sec
+Seq Length: 100 | Test Acc: 79.788% | Time: 0.00 hr 0.00 min 5.21 sec
+Seq Length: 150 | Test Acc: 83.504% | Time: 0.00 hr 0.00 min 7.71 sec
+Seq Length: 200 | Test Acc: 85.080% | Time: 0.00 hr 0.00 min 10.41 sec
+Seq Length: 250 | Test Acc: 86.196% | Time: 0.00 hr 0.00 min 13.03 sec
+Seq Length: 300 | Test Acc: 86.948% | Time: 0.00 hr 0.00 min 15.68 sec
+Seq Length: 350 | Test Acc: 87.008% | Time: 0.00 hr 0.00 min 18.63 sec
+Seq Length: 400 | Test Acc: 87.516% | Time: 0.00 hr 0.00 min 21.28 sec
+Seq Length: 450 | Test Acc: 87.616% | Time: 0.00 hr 0.00 min 23.94 sec
+Seq Length: 500 | Test Acc: 87.624% | Time: 0.00 hr 0.00 min 26.88 sec
