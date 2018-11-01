@@ -64,7 +64,7 @@ elif(opt=='sgd'):
 
 seq_length = args.seq_len
 batch_size = 200
-no_of_epochs = 20
+no_of_epochs = 100
 L_Y_train = len(y_train)
 
 model.train()

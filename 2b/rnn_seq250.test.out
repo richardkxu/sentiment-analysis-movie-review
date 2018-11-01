@@ -1,0 +1,12 @@
+Using gpu: 3
+Testing: rnn_seq250.model
+Seq Length: 50 | Test Acc: 77.848% | Test Loss: 1.019 | Time: 0.00 hr 0.00 min 4.91 sec
+Seq Length: 100 | Test Acc: 83.204% | Test Loss: 0.831 | Time: 0.00 hr 0.00 min 11.62 sec
+Seq Length: 150 | Test Acc: 86.332% | Test Loss: 0.679 | Time: 0.00 hr 0.00 min 17.16 sec
+Seq Length: 200 | Test Acc: 87.944% | Test Loss: 0.591 | Time: 0.00 hr 0.00 min 26.12 sec
+Seq Length: 250 | Test Acc: 88.804% | Test Loss: 0.540 | Time: 0.00 hr 0.00 min 32.76 sec
+Seq Length: 300 | Test Acc: 89.124% | Test Loss: 0.531 | Time: 0.00 hr 0.00 min 38.98 sec
+Seq Length: 350 | Test Acc: 89.436% | Test Loss: 0.515 | Time: 0.00 hr 0.00 min 45.80 sec
+Seq Length: 400 | Test Acc: 89.708% | Test Loss: 0.500 | Time: 0.00 hr 0.00 min 52.31 sec
+Seq Length: 450 | Test Acc: 89.864% | Test Loss: 0.494 | Time: 0.00 hr 0.00 min 59.29 sec
+Seq Length: 500 | Test Acc: 89.956% | Test Loss: 0.488 | Time: 0.00 hr 1.00 min 7.91 sec
