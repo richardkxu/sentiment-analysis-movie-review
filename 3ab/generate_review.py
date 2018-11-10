@@ -119,4 +119,4 @@ for temperature in temperature_list:
             prnt_str += word
             prnt_str += ' '
         print(prnt_str)
-
+        print()
