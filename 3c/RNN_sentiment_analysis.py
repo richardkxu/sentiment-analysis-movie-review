@@ -52,7 +52,7 @@ y_train[0:12500] = 1
 vocab_size += 1
 # no_of_hidden_units equal to 500
 model = RNN_model(vocab_size,500)
-language_model = torch.load('language.model')
+language_model = torch.load('../3ab/language.model')
 
 model.embedding.load_state_dict(language_model.embedding.state_dict())
 model.lstm1.lstm.load_state_dict(language_model.lstm1.lstm.state_dict())
