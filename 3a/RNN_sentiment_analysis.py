@@ -87,7 +87,7 @@ test_accu = []
 
 
 ######## training loop ########
-for epoch in range(0, 75):
+for epoch in range(75):
 
     if epoch == 50 :
         for param_group in optimizer.param_groups:
@@ -107,7 +107,7 @@ for epoch in range(0, 75):
 
         x_input2 = [x_train[j] for j in I_permutation[i:i+batch_size]]
         sequence_length = 50
-        x_input = np.zeros((batch_size,sequence_length), dtype=np.int)
+        x_input = np.zeros((batch_size, sequence_length), dtype=np.int)
         for j in range(batch_size):
             x = np.asarray(x_input2[j])
             sl = x.shape[0]
@@ -135,9 +135,6 @@ for epoch in range(0, 75):
         epoch_acc += accuracy
         epoch_loss += loss.data.item()
         epoch_counter += batch_size
-
-        if (i+batch_size) % 1000 == 0 and epoch==0:
-           print(i+batch_size, accuracy/batch_size, loss.data.item(), norm, "%.4f" % float(time.time()-time1))
 
     epoch_acc /= epoch_counter
     epoch_loss /= (epoch_counter/batch_size)
@@ -199,7 +196,7 @@ for epoch in range(0, 75):
         min, sec = divmod(sec, 60)
         hr, min = divmod(min, 60)
 
-        print('    Test Acc: {:.3f}% | Test Loss: {:.3f} | Time: {:.2f} hr {:.2f} min {:.2f} sec'.format(epoch, epoch_acc*100.0, epoch_loss, hr, min, sec))
+        print('            Test Acc: {:.3f}% | Test Loss: {:.3f} | Time: {:.2f} hr {:.2f} min {:.2f} sec'.format(epoch_acc*100.0, epoch_loss, hr, min, sec))
 
     torch.cuda.empty_cache()
 
