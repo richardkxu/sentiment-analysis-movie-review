@@ -184,9 +184,6 @@ for epoch in range(75):
             epoch_acc += accuracy
             epoch_counter += batch_size
 
-            if (i+batch_size) % 1000 == 0 and epoch==0:
-               print(i+batch_size, accuracy/batch_size)
-
         epoch_acc /= epoch_counter
         epoch_loss /= (epoch_counter/batch_size)
         test_accu.append(epoch_acc)
