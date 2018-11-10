@@ -41,7 +41,7 @@ class LockedDropout(nn.Module):
         self.m = None
 
     def forward(self, x, dropout=0.5, train=True):
-        if train==False:
+        if not train:
             return x
         if(self.m is None):
             self.m = x.data.new(x.size()).bernoulli_(1 - dropout)
