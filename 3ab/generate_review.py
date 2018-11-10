@@ -91,11 +91,7 @@ for temperature in temperature_list:
         review.append(x.cpu().data.numpy()[:,0])
 
         ## predict the next word
-        print(x)
-        print(x.shape)
         embed = model.embedding(x)
-        print(embed)
-        print(embed.shape)
         h = model.lstm1(embed[:, 0, :])
         h = model.bn_lstm1(h)
         h = model.dropout1(h,dropout=0.3,train=False)
