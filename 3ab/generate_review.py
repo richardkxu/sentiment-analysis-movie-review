@@ -35,11 +35,14 @@ model.eval()
 # this implementation requires the partial sentences
 # to be the same length if doing more than one
 # tokens = [['i','love','this','movie','.'],['i','hate','this','movie','.']]
+
+# batch size = 2, time step = 1
 tokens = [['a'],['i']]
 
+# if exist, get id; if not, assign -1 (unknown) as id
 token_ids = np.asarray([[word_to_id.get(token,-1)+1 for token in x] for x in tokens])
 
-## preload phrase
+# preload phrase
 x = Variable(torch.LongTensor(token_ids)).cuda()
 
 embed = model.embedding(x) # batch_size, time_steps, features
@@ -49,8 +52,7 @@ no_of_timesteps = embed.shape[1]
 
 model.reset_state()
 
-# loops through the sequences (both sequences at the same time using
-# batch processing) and “primes” the model with our partial sentences
+# loops through each word in tokens
 outputs = []
 for i in range(no_of_timesteps):
 
@@ -70,9 +72,9 @@ for i in range(no_of_timesteps):
 
     outputs.append(h)
 
-outputs = torch.stack(outputs) # batch_size, vocab_size
-outputs = outputs.permute(1,2,0)
-output = outputs[:,:,-1]
+outputs = torch.stack(outputs)  # time steps, batch_size, vocab_size
+outputs = outputs.permute(1,2,0)  # batch_size, vocab_size, time steps
+output = outputs[:,:,-1]  # batch_size, vocab_size
 
 temperature_list = [1.0, 0.5, 1.5]  # float(sys.argv[1])
 length_of_review = 150
@@ -85,9 +87,9 @@ for temperature in temperature_list:
         ## sample a word from the previous output
         output = output/temperature
         probs = torch.exp(output)
-        probs[:,0] = 0.0
-        probs = probs/(torch.sum(probs,dim=1).unsqueeze(1))
-        x = torch.multinomial(probs,1)
+        probs[:,0] = 0.0  # prob of getting unknow token is 0.0
+        probs = probs/(torch.sum(probs, dim=1).unsqueeze(1))
+        x = torch.multinomial(probs, 1)  # larger output word has larger prob of being selected
         review.append(x.cpu().data.numpy()[:,0])
 
         ## predict the next word
@@ -104,14 +106,14 @@ for temperature in temperature_list:
         h = model.bn_lstm3(h)
         h = model.dropout3(h,dropout=0.3,train=False)
 
-        output = model.decoder(h)
+        output = model.decoder(h)  # reuse at the next iter
 
     # Here we simply convert the token ids to their corresponding string
     review = np.asarray(review)
     review = review.T
-    review = np.concatenate((token_ids,review),axis=1)
+    review = np.concatenate((token_ids,review), axis=1)
     review = review - 1
-    review[review<0] = vocab_size - 1
+    review[review<0] = vocab_size - 1  # put unknown token as the least freq word
     review_words = imdb_dictionary[review]
     for review in review_words:
         prnt_str = ''

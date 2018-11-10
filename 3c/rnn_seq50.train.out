@@ -1,0 +1,22 @@
+Using gpu: 2
+Using sequence length of: 50
+Epoch: 0 | Train Acc: 64.652% | Train Loss: 0.641 | Time: 0.00 hr 0.00 min 20.78 sec
+Epoch: 1 | Train Acc: 72.848% | Train Loss: 0.532 | Time: 0.00 hr 0.00 min 20.85 sec
+Epoch: 2 | Train Acc: 75.940% | Train Loss: 0.489 | Time: 0.00 hr 0.00 min 20.81 sec
+Epoch: 3 | Train Acc: 78.168% | Train Loss: 0.456 | Time: 0.00 hr 0.00 min 20.81 sec
+Epoch: 4 | Train Acc: 79.480% | Train Loss: 0.433 | Time: 0.00 hr 0.00 min 20.90 sec
+Epoch: 5 | Train Acc: 81.112% | Train Loss: 0.411 | Time: 0.00 hr 0.00 min 20.93 sec
+Epoch: 6 | Train Acc: 81.392% | Train Loss: 0.405 | Time: 0.00 hr 0.00 min 20.87 sec
+Epoch: 7 | Train Acc: 82.536% | Train Loss: 0.389 | Time: 0.00 hr 0.00 min 20.96 sec
+Epoch: 8 | Train Acc: 83.160% | Train Loss: 0.372 | Time: 0.00 hr 0.00 min 20.86 sec
+Epoch: 9 | Train Acc: 84.520% | Train Loss: 0.353 | Time: 0.00 hr 0.00 min 20.67 sec
+Epoch: 10 | Train Acc: 85.196% | Train Loss: 0.341 | Time: 0.00 hr 0.00 min 20.80 sec
+Epoch: 11 | Train Acc: 85.788% | Train Loss: 0.330 | Time: 0.00 hr 0.00 min 20.96 sec
+Epoch: 12 | Train Acc: 86.088% | Train Loss: 0.321 | Time: 0.00 hr 0.00 min 20.87 sec
+Epoch: 13 | Train Acc: 86.752% | Train Loss: 0.310 | Time: 0.00 hr 0.00 min 20.80 sec
+Epoch: 14 | Train Acc: 88.072% | Train Loss: 0.292 | Time: 0.00 hr 0.00 min 20.82 sec
+Epoch: 15 | Train Acc: 87.948% | Train Loss: 0.289 | Time: 0.00 hr 0.00 min 20.83 sec
+Epoch: 16 | Train Acc: 89.148% | Train Loss: 0.267 | Time: 0.00 hr 0.00 min 20.90 sec
+Epoch: 17 | Train Acc: 89.120% | Train Loss: 0.262 | Time: 0.00 hr 0.00 min 20.95 sec
+Epoch: 18 | Train Acc: 89.576% | Train Loss: 0.249 | Time: 0.00 hr 0.00 min 20.91 sec
+Epoch: 19 | Train Acc: 90.072% | Train Loss: 0.247 | Time: 0.00 hr 0.00 min 20.92 sec
