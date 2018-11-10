@@ -154,7 +154,6 @@ for epoch in range(75):
         model.eval()
 
         epoch_acc = 0.0
-        epoch_loss = 0.0
         epoch_counter = 0
 
         time1 = time.time()
@@ -185,7 +184,6 @@ for epoch in range(75):
             epoch_counter += batch_size
 
         epoch_acc /= epoch_counter
-        epoch_loss /= (epoch_counter/batch_size)
         test_accu.append(epoch_acc)
 
         time2 = time.time()
@@ -193,7 +191,7 @@ for epoch in range(75):
         min, sec = divmod(sec, 60)
         hr, min = divmod(min, 60)
 
-        print('            Test Acc: {:.3f}% | Test Loss: {:.3f} | Time: {:.2f} hr {:.2f} min {:.2f} sec'.format(epoch_acc*100.0, epoch_loss, hr, min, sec))
+        print('           Test Acc: {:.3f}% | Time: {:.2f} hr {:.2f} min {:.2f} sec'.format(epoch_acc*100.0, hr, min, sec))
 
     torch.cuda.empty_cache()
 
