@@ -51,7 +51,16 @@ y_train[0:12500] = 1
 # of the token ids so we could use id 0 for the unknown token
 vocab_size += 1
 # no_of_hidden_units equal to 500
-model = RNN_model(vocab_size, 500)
+model = RNN_model(vocab_size,500)
+language_model = torch.load('language.model')
+
+model.embedding.load_state_dict(language_model.embedding.state_dict())
+model.lstm1.lstm.load_state_dict(language_model.lstm1.lstm.state_dict())
+model.bn_lstm1.load_state_dict(language_model.bn_lstm1.state_dict())
+model.lstm2.lstm.load_state_dict(language_model.lstm2.lstm.state_dict())
+model.bn_lstm2.load_state_dict(language_model.bn_lstm2.state_dict())
+model.lstm3.lstm.load_state_dict(language_model.lstm3.lstm.state_dict())
+model.bn_lstm3.load_state_dict(language_model.bn_lstm3.state_dict())
 model.cuda()
 
 params = []

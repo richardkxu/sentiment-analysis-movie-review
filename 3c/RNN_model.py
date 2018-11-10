@@ -75,6 +75,10 @@ class RNN_model(nn.Module):
     def reset_state(self):
         self.lstm1.reset_state()
         self.dropout1.reset_state()
+        self.lstm2.reset_state()
+        self.dropout2.reset_state()
+        self.lstm3.reset_state()
+        self.dropout3.reset_state()
 
     def forward(self, x, t, train=True):
 
