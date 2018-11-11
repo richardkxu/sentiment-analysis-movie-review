@@ -11,6 +11,7 @@ import argparse
 # parse input
 parser = argparse.ArgumentParser()
 parser.add_argument('--gpu', type=str, help='which gpu(cuda visible device) to use')
+parser.add_argument('--seq_len', default=50, type=int, help='number of words per document to cut')
 args = parser.parse_args()
 
 if not args.gpu:
@@ -18,6 +19,9 @@ if not args.gpu:
 else:
     os.environ["CUDA_VISIBLE_DEVICES"]=args.gpu
     print("Using gpu: {}".format(args.gpu))
+
+model_name = 'languageSenti' + args.seq_len + '.model'
+print("Testing using: {}".format(model_name))
 
 ######## load test set ########
 vocab_size = 8000
@@ -38,7 +42,7 @@ y_test[0:12500] = 1
 # add 1 to vocab_size. Remember we actually added 1 to all
 # of the token ids so we could use id 0 for the unknown token
 vocab_size += 1
-model = torch.load('rnn_seq250.model')
+model = torch.load(model_name)
 model.cuda()
 
 
@@ -99,9 +103,7 @@ for epoch in range(no_of_epochs):
 
     time2 = time.time()
     sec = time2-time1
-
     min, sec = divmod(sec, 60)
     hr, min = divmod(min, 60)
     print('Seq Length: {} | Test Acc: {:.3f}% | Time: {:.2f} hr {:.2f} min {:.2f} sec'.format(sequence_length, epoch_acc*100.0, hr, min, sec))
-
 
