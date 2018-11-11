@@ -76,7 +76,7 @@ outputs = torch.stack(outputs)  # time steps, batch_size, vocab_size
 outputs = outputs.permute(1,2,0)  # batch_size, vocab_size, time steps
 output = outputs[:,:,-1]  # batch_size, vocab_size
 
-temperature_list = [1.0, 0.5, 1.5]  # float(sys.argv[1])
+temperature_list = [1.0, 0.5, 1.5]
 length_of_review = 150
 
 for temperature in temperature_list:

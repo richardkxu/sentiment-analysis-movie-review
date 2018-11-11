@@ -53,6 +53,7 @@ vocab_size += 1
 model = RNN_language_model(vocab_size,500)
 language_model = torch.load('../3ab/language.model')
 
+# load weights from language model
 model.embedding.load_state_dict(language_model.embedding.state_dict())
 model.lstm1.lstm.load_state_dict(language_model.lstm1.lstm.state_dict())
 model.bn_lstm1.load_state_dict(language_model.bn_lstm1.state_dict())
@@ -62,6 +63,8 @@ model.lstm3.lstm.load_state_dict(language_model.lstm3.lstm.state_dict())
 model.bn_lstm3.load_state_dict(language_model.bn_lstm3.state_dict())
 model.cuda()
 
+# only fine tune the last block of lstm, bn, fc layer
+# freeze previous blocks
 params = []
 for param in model.lstm3.parameters():
     params.append(param)
@@ -151,5 +154,4 @@ for epoch in range(no_of_epochs):
     print('Epoch: {} | Train Acc: {:.3f}% | Train Loss: {:.3f} | Time: {:.2f} hr {:.2f} min {:.2f} sec'.format(epoch, epoch_acc*100.0, epoch_loss, hr, min, sec))
 
 torch.save(model, "languageSenti" + str(args.seq_len) + ".model")
-
 

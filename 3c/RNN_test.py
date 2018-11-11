@@ -63,7 +63,7 @@ for epoch in range(no_of_epochs):
     epoch_loss = 0.0
     epoch_counter = 0
 
-    sequence_length = (epoch+1)*50
+    sequence_length = (epoch+1)*50  # different sequence length
 
     time1 = time.time()
 
