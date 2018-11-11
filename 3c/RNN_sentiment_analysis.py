@@ -8,8 +8,7 @@ import os
 import io
 import argparse
 
-from RNN_model import RNN_model
-
+from RNN_model import RNN_language_model
 
 # parse input
 parser = argparse.ArgumentParser()
@@ -51,7 +50,7 @@ y_train[0:12500] = 1
 # of the token ids so we could use id 0 for the unknown token
 vocab_size += 1
 # no_of_hidden_units equal to 500
-model = RNN_model(vocab_size,500)
+model = RNN_language_model(vocab_size,500)
 language_model = torch.load('../3ab/language.model')
 
 model.embedding.load_state_dict(language_model.embedding.state_dict())
@@ -81,7 +80,7 @@ elif(opt=='sgd'):
 
 seq_length = args.seq_len
 batch_size = 200
-no_of_epochs = 20
+no_of_epochs = 60
 L_Y_train = len(y_train)
 
 model.train()
