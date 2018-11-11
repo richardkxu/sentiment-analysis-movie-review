@@ -20,7 +20,7 @@ else:
     os.environ["CUDA_VISIBLE_DEVICES"]=args.gpu
     print("Using gpu: {}".format(args.gpu))
 
-model_name = 'languageSenti' + args.seq_len + '.model'
+model_name = 'languageSenti' + str(args.seq_len) + '.model'
 print("Testing using: {}".format(model_name))
 
 ######## load test set ########

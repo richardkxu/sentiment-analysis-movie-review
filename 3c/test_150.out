@@ -1,0 +1,12 @@
+Using gpu: 0
+Testing using: languageSenti150.model
+Seq Length: 50 | Test Acc: 77.888% | Time: 0.00 hr 0.00 min 22.16 sec
+Seq Length: 100 | Test Acc: 84.264% | Time: 0.00 hr 0.00 min 43.71 sec
+Seq Length: 150 | Test Acc: 87.868% | Time: 0.00 hr 1.00 min 5.32 sec
+Seq Length: 200 | Test Acc: 89.476% | Time: 0.00 hr 1.00 min 27.34 sec
+Seq Length: 250 | Test Acc: 90.376% | Time: 0.00 hr 1.00 min 49.09 sec
+Seq Length: 300 | Test Acc: 90.784% | Time: 0.00 hr 2.00 min 11.40 sec
+Seq Length: 350 | Test Acc: 91.172% | Time: 0.00 hr 2.00 min 33.09 sec
+Seq Length: 400 | Test Acc: 91.392% | Time: 0.00 hr 2.00 min 54.84 sec
+Seq Length: 450 | Test Acc: 91.592% | Time: 0.00 hr 3.00 min 16.87 sec
+Seq Length: 500 | Test Acc: 91.624% | Time: 0.00 hr 3.00 min 39.10 sec
